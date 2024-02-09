@@ -36,12 +36,18 @@ app.get("/api/:date?", function (req, res) {
     })
     
   }else{
+
     let tiempo = new Date(Number(tiempoString));
 
-    res.json({
-      unix: tiempo.getTime(),
-      utc: tiempo.toUTCString(),
-    })
+    if (isNaN(tiempo.getTime())) {
+      res.json({ error: 'Invalid Date' });
+    } else {
+      res.json({
+        unix: tiempo.getTime(),
+        utc: tiempo.toUTCString(),
+      })
+    }
+
   }
 });
 
