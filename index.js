@@ -43,7 +43,7 @@ app.get("/api/:date?", function (req, res) {
       utc: tiempo.toUTCString(),
     })
   }
-}
+});
 
 
 // listen for requests :)
