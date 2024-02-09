@@ -31,19 +31,19 @@ app.get("/api/:tiempoString?", function (req, res) {
    let tiempoAhora = new Date();
 
     res.json({
-      unix: tiempoAhora,
+      unix: tiempoString,
       utc: tiempoAhora.toUTCString(),
     })
     
   }else{
 
-    let tiempo = new Date(Number(tiempoString));
+    let tiempo = new Date(tiempoString);
 
     if (isNaN(tiempo.getTime())) {
       res.json({ error: 'Invalid Date' });
     } else {
       res.json({
-        unix: tiempo,
+        unix: tiempo.valueOf(),
         utc: tiempo.toUTCString(),
       })
     }
