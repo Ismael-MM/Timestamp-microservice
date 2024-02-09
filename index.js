@@ -25,13 +25,13 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:tiempoString?", function (req, res) {
-  let tiempoString = req.params.date;
+  let tiempoString = req.params.tiempoString;
 
   if (!tiempoString) {
    let tiempoAhora = new Date();
 
     res.json({
-      unix: tiempoAhora.getTime(),
+      unix: tiempoAhora,
       utc: tiempoAhora.toUTCString(),
     })
     
@@ -43,7 +43,7 @@ app.get("/api/:tiempoString?", function (req, res) {
       res.json({ error: 'Invalid Date' });
     } else {
       res.json({
-        unix: tiempo.getTime(),
+        unix: tiempo,
         utc: tiempo.toUTCString(),
       })
     }
