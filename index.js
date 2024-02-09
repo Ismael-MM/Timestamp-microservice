@@ -24,9 +24,29 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+app.get("/api/:date?", function (req, res) {
+  let tiempoString = req.params.date;
+
+  if (!tiempo) {
+   let tiempoAhora = new Date();
+
+    res.json({
+      unix: tiempoAhora.getTime(),
+      utc: tiempoAhora.toUTCString(),
+    })
+    
+  }else{
+    const tiempo = new Date(Number(tiempoString));
+
+    res.json({
+      unix: tiempo.getTime(),
+      utc: tiempo.toUTCString(),
+    })
+  }
+}
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
