@@ -27,7 +27,7 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", function (req, res) {
   let tiempoString = req.params.date;
 
-  if (!tiempo) {
+  if (!tiempoString) {
    let tiempoAhora = new Date();
 
     res.json({
@@ -36,7 +36,7 @@ app.get("/api/:date?", function (req, res) {
     })
     
   }else{
-    const tiempo = new Date(Number(tiempoString));
+    let tiempo = new Date(Number(tiempoString));
 
     res.json({
       unix: tiempo.getTime(),
