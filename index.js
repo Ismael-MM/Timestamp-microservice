@@ -24,7 +24,7 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/api/:date?", function (req, res) {
+app.get("/api/:tiempoString?", function (req, res) {
   let tiempoString = req.params.date;
 
   if (!tiempoString) {
